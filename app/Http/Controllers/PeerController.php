@@ -31,6 +31,7 @@ class PeerController extends Controller
             'peer_id' => 'required|max:64',
             'port' => 'required|integer',
             'info_hash' => 'required|max:64',
+            'local_ip' => 'required|max:64',
             'event' => ['required', Rule::in(['started', 'stopped', 'completed'])],
             'downloaded' => 'required|integer',
             'uploaded' => 'required|integer',
@@ -45,6 +46,7 @@ class PeerController extends Controller
 
         $peer->peer_id = $request->peer_id;
         $peer->ip = $request->ip();
+        $peer->local_ip = $request->local_ip;
         $peer->port = $request->port;
         $peer->info_hash = $request->info_hash;
         $peer->event = $request->event;
